@@ -33,15 +33,15 @@ build-all: build-linux build-windows build-macos
 
 build-linux: FORCE
 	mkdir -p build
-	GOOS=linux go build -o build/$(NAME)-$(VERSION)-linux -ldflags "-X $(TOP_IMPORT).Version=$(VERSION)" $(TOP_IMPORT)/$(NAME)
+	GOOS=linux go build -o build/$(NAME)-$(VERSION)-linux -ldflags "-X $(TOP_IMPORT).Version=$(VERSION)" $(TOP_IMPORT)
 
 build-windows: FORCE
 	mkdir -p build
-	GOOS=windows go build -o build/$(NAME)-$(VERSION)-windows.exe -ldflags "-X $(TOP_IMPORT).Version=$(VERSION)" $(TOP_IMPORT)/$(NAME)
+	GOOS=windows go build -o build/$(NAME)-$(VERSION)-windows.exe -ldflags "-X $(TOP_IMPORT).Version=$(VERSION)" $(TOP_IMPORT)
 
 build-macos: FORCE
 	mkdir -p build
-	GOOS=darwin go build -o build/$(NAME)-$(VERSION)-macos -ldflags "-X $(TOP_IMPORT).Version=$(VERSION)" $(TOP_IMPORT)/$(NAME)
+	GOOS=darwin go build -o build/$(NAME)-$(VERSION)-macos -ldflags "-X $(TOP_IMPORT).Version=$(VERSION)" $(TOP_IMPORT)
 
 FORCE:
 
