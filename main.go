@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"sync"
 	"time"
 )
 
@@ -35,7 +34,6 @@ func main() {
 }
 
 type log struct {
-	lock      sync.Mutex
 	name      string
 	lineLimit int
 	file      *os.File
@@ -43,8 +41,6 @@ type log struct {
 }
 
 func (lg *log) Println(line string) (int, error) {
-	lg.lock.Lock()
-	defer lg.lock.Unlock()
 	if lg.file == nil {
 		os.Rename(lg.name, lg.name+time.Now().Format(".2006-01-02.150405"))
 		var err error
