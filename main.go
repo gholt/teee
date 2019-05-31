@@ -57,6 +57,7 @@ func (lg *log) Println(line string) (int, error) {
 	}
 	lg.lineCount++
 	if lg.lineCount >= lg.lineLimit {
+		lg.lineCount = 0
 		if err := lg.file.Close(); err != nil {
 			return len([]byte(line)) + 1, err
 		}
